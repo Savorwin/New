@@ -1,33 +1,34 @@
 "use strict";
 
-const arr = [3, 5, 8, 16, 20, 23, 50];
-let result = [];
+let numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
 
-for (let i = 0; i < arr.length; i++) {
-    result[i] = arr[i];
-}
-console.log(result);
+let personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false,
+};
 
+for (let i = 0; i < 2; i++) {
+    let lastFilm = prompt('Один из последних просмотренных фильмов', '');
+    let rating = prompt('На сколько оцените его?', '');
 
-let data = [5, 10, 'Shopping', 20, 'Homework'];
-
-for (let i = 0; i < data.length; i++) {
-    if (typeof(data[i]) === "number") {
-        data[i] = data[i] * 2;
-    } else if (typeof(data[i]) === "string") {
-        data[i] = data[i] + " - done";
-    }
-}
-
-console.log(data);
-
-
-const data1 = [5, 10, 'Shopping', 20, 'Homework'];
-const result1 = [];
-
-for (let i = 0; i <= data1.length; i++) {
-    result1[i - 1] = data1[data1.length - i]; 
+    if (lastFilm != "" && rating != "" && lastFilm != null && rating != null && lastFilm.length < 50) {  
+    personalMovieDB.movies[lastFilm] = rating;
+    } 
 }
 
-console.log(result);
+if (personalMovieDB.count < 10) {
+    alert("Просмотрено довольно мало фильмов");
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count <= 30) {
+    alert("Вы классический зритель");
+} else if (personalMovieDB.count >= 31) {
+    alert("Вы киноман");
+} else {
+    alert("Произошла ошибка");
+}
+        
+console.log(personalMovieDB);
+
 
