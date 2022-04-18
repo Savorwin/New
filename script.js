@@ -1,32 +1,34 @@
 "use strict";
 
-if (0) {
-    console.log('Ok!');
+//const hamburger = 5;
+//const fries = 0;
+//
+//if (hamburger && fries) {
+//    console.log("Я сыт");
+//};
+
+//console.log(1 && 0);
+//console.log(1 && 5);
+//console.log(null && 5);
+//console.log(0 && hdhjhj);
+
+const hamburger = 3;
+const fries = 3;
+const cola = 0;
+const nuggets = 2;
+
+console.log((hamburger === 3 && cola === 2 || fries === 3 && nuggets === 1));
+
+if (hamburger === 3 && cola === 2 || fries === 3 && nuggets === 1) {
+    console.log("Все довольны");
 } else {
-    console.log('Error');  
+    console.log("Мы уходим");
 };
 
-const num = 50;
 
-if (num < 49) {
-    console.log('Error');
-} else if (num > 100) {
-    console.log('To much');
-} else {
-    console.log('Okey!');
-}
 
-(num == 50) ? console.log('Ok') : console.log('Error');
+let johnReport, alexReport, samReport, mariaReport = 'done';
+console.log(johnReport || alexReport || samReport || mariaReport);
 
-const num2 = 60;
+console.log(!0);
 
-switch (num2) {
-    case 59: console.log('Не верно');
-    break;
-    case 61: console.log('Не верно');
-    break;
-    case 63: console.log('Верно');
-    break;
-    default: console.log('Не в этот раз');
-    break;
-};
