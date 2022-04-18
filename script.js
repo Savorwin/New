@@ -16,7 +16,7 @@ for (let i = 0; i < 2; i++) {
 
     if (lastFilm != "" && rating != "" && lastFilm != null && rating != null && lastFilm.length < 50) {  
     personalMovieDB.movies[lastFilm] = rating;
-    } 
+    } else i--;
 }
 
 if (personalMovieDB.count < 10) {
