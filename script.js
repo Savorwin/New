@@ -1,30 +1,49 @@
 "use strict";
 
-function calculateVolumeAndArea(a) {
-    if (typeof(a) === "number" && a === Math.round(a) && a > 0) {
-        let volume = a * a * a;
-    let square = 6 * (a * a);
-    return console.log(`Объем куба: ${volume}, площадь всей поверхности: ${square}`);
-} else {
-    return console.log("При вычислении произошла ошибка");
-}
+function getTimeFromMinutes(timerMinutes) {
+    if (timerMinutes < 0 || typeof(timerMinutes) !== "number" || timerMinutes !== Math.round(timerMinutes)) {
+        return console.log("Ошибка, проверьте данные");
     }
     
-//calculateVolumeAndArea(36);
+    let hours = Math.floor(timerMinutes / 60);
+    let minuts = timerMinutes % 60;
+    let hoursStr = "";
 
-
-function getCoupeNumber(seatNumber) {
-    if (seatNumber < 0 || seatNumber !== Math.round(seatNumber) || typeof(seatNumber) !== "number") {
-        return console.log("Ошибка. Проверьте правильность введенного номера места");
-    } 
-    
-    if (seatNumber === 0 || seatNumber > 36) {
-        return console.log("Таких мест в вагоне не существует");
-    } 
-
-    if (seatNumber >= 1 || seatNumber <= 36) {
-        return console.log(`Номер вашего места: ${seatNumber}, номер купе: ${Math.ceil(seatNumber / 4)}`); 
+    switch(hours) {
+        case 0: 
+            hoursStr = "часов";
+            break;
+        case 1: 
+            hoursStr = "час";
+            break;
+        case 2: 
+        case 3: 
+        case 4: 
+            hoursStr = "часа";
+            break;
+        default: 
+            hoursStr = "часов";  
     }
+
+    return console.log(`Это ${hours} ${hoursStr} и ${minuts} минут`);
 }
 
-getCoupeNumber(15);
+getTimeFromMinutes(150);
+
+
+function findMaxNumber(a, b, c, d) {
+    if (typeof(a) !== "number" || typeof(b) !== "number" || typeof(c) !== "number" || typeof(d) !== "number") {
+        return 0;
+    }
+
+    if (a > b && a > c && a > d) {
+        return a;
+    } else if (b > a && b > c && b > d) {
+        return b;
+    } else if (c > a && c > b && c > d) {
+        return c;
+    } else return d;
+
+}
+
+console.log(findMaxNumber(11, 10, 7, 9));
