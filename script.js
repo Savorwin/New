@@ -1,98 +1,45 @@
 "use strict";
 
-//let a = 5,
- //   b = a;
-//
-//b = b + 5;
-
-//console.log(b);
-//console.log(a);
-
-//const obj = {
-   // a: 5,
-   // b: 1,
-//};
-
-//const copy = obj;
-
-//copy.a = 10;
-
-//console.log(copy);
-//console.log(obj);
-
-//function copy(mainObj) {
-    //let objCopy = {};
-
-    //for(let key in mainObj) {
-       // objCopy[key] = mainObj[key];
-    //} 
-
-   // return objCopy;
-//}
-
-let numbers = {
-    a: 2,
-    b: 5,
-    c: {
-        x: 7,
-        y: 4
+const personalPlanPeter = {
+    name: "Peter",
+    age: "29",
+    skills: {
+        languages: ['ru', 'eng'],
+        programmingLangs: {
+            js: '20%',
+            php: '10%'
+        },
+        exp: '1 month',
     },
-};
+        showAgeAndLangs: function (plan) {
+            const {age} = plan;
+            const {languages} = plan.skills;
+            let str = `Мне ${age} и я вледею языками: `;
 
-//const newNumbers = copy(numbers);
+            languages.forEach(function(lang) {
+                str += `${lang.toUpperCase()} `;
+            });
 
-//newNumbers.a = 10;
-//console.log(newNumbers);
-//console.log(numbers);
+            return console.log(str);
+
+        } 
+    };
+
+personalPlanPeter.showAgeAndLangs(personalPlanPeter);
+
+function showExperience(plan) {
+    let result = plan['skills']['exp'];
+    return result;
+}
+console.log(showExperience(personalPlanPeter));
 
 
-const add = {
-    d: 17,
-    e: 20,
-};
-
-//console.log(Object.assign(numbers, add));
-
-const clone = Object.assign({}, add);
-clone.d = 20;
-console.log(add);
-console.log(clone);
-
-const oldArray = ['a', 'b', 'c'];
-const newArray = oldArray.slice();
-
-newArray[1] = 'fghj';
-console.log(newArray);
-console.log(oldArray);
-
-//Spread
-
-const video = ['youtube', 'vimeo', 'rutube'],
-      blogs = ['wordpress', 'livejournal', 'blogger'],
-      internet = [...video, ...blogs, 'vk', 'facebook'];
-
-      console.log(internet);
-
-      
-function log(a, b, c) {
-          console.log(a);
-          console.log(b);
-          console.log(c);
-      }
-
-      const num = [2, 5, 7];
-
-      log(... num);
-
-      //для объектов, Spread
-
-      const array = ['aa', 'bb'];
-      const newArray2 = [...array];
-
-      const q = {
-          one: 1,
-          two: 2,
-      };
-
-      const newObj2 = {...q};
-      console.log(newObj2);
+function showProgrammingLangs(plan) {
+       let str ='';
+       const {programmingLangs} = plan.skills;
+       for(let key in programmingLangs) {
+           str += `Язык ${key} изучен на ${programmingLangs[key]}\n`;
+       } 
+       return str;
+}
+console.log(showProgrammingLangs(personalPlanPeter));
