@@ -1,27 +1,98 @@
 "use strict";
 
-const arr = [1, 2, 23, 16, 18];
+//let a = 5,
+ //   b = a;
+//
+//b = b + 5;
 
-arr.sort(compareNum);
-console.log(arr);
+//console.log(b);
+//console.log(a);
 
-function compareNum(a, b) {
-    return a - b;
-}
+//const obj = {
+   // a: 5,
+   // b: 1,
+//};
 
-for (let value of arr) {
-    console.log(value);
-}
+//const copy = obj;
 
-console.log(arr.length);
+//copy.a = 10;
 
-arr[99] = 0;
-console.log(arr);
+//console.log(copy);
+//console.log(obj);
 
-arr.forEach(function(item, i, arr) {
-    console.log(`${i}: ${item} внутри массива ${arr}`);
-});
+//function copy(mainObj) {
+    //let objCopy = {};
 
-const str = prompt('', '');
-const products = str.split(', ');
-console.log(products.join('; '));
+    //for(let key in mainObj) {
+       // objCopy[key] = mainObj[key];
+    //} 
+
+   // return objCopy;
+//}
+
+let numbers = {
+    a: 2,
+    b: 5,
+    c: {
+        x: 7,
+        y: 4
+    },
+};
+
+//const newNumbers = copy(numbers);
+
+//newNumbers.a = 10;
+//console.log(newNumbers);
+//console.log(numbers);
+
+
+const add = {
+    d: 17,
+    e: 20,
+};
+
+//console.log(Object.assign(numbers, add));
+
+const clone = Object.assign({}, add);
+clone.d = 20;
+console.log(add);
+console.log(clone);
+
+const oldArray = ['a', 'b', 'c'];
+const newArray = oldArray.slice();
+
+newArray[1] = 'fghj';
+console.log(newArray);
+console.log(oldArray);
+
+//Spread
+
+const video = ['youtube', 'vimeo', 'rutube'],
+      blogs = ['wordpress', 'livejournal', 'blogger'],
+      internet = [...video, ...blogs, 'vk', 'facebook'];
+
+      console.log(internet);
+
+      
+function log(a, b, c) {
+          console.log(a);
+          console.log(b);
+          console.log(c);
+      }
+
+      const num = [2, 5, 7];
+
+      log(... num);
+
+      //для объектов, Spread
+
+      const array = ['aa', 'bb'];
+      const newArray2 = [...array];
+
+      const q = {
+          one: 1,
+          two: 2,
+      };
+
+      const newObj2 = {...q};
+      console.log(newObj2);
