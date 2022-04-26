@@ -1,19 +1,25 @@
 "use strict";
 
-function createCounter() {
-    let counter = 0;
+const box = document.getElementById('box');
 
-    const myFunction = function() {
-        counter = counter + 1;
-        return counter;
-    };
+console.log(box);
 
-    return myFunction;
-}
+const btns = document.getElementsByTagName('button')[1];
 
-const increment = createCounter();
-const c1 = increment();
-const c2 = increment();
-const c3 = increment();
+console.log(btns);
 
-console.log(c1, c2, c3);
+const circles = document.getElementsByClassName('circle');
+
+console.log(circles);
+
+//более современные методы
+
+const hearts = document.querySelectorAll('.heart'); 
+
+hearts.forEach(item => {
+    console.log(item);
+});
+
+const buttonOne = document.querySelector('button');
+
+console.log(buttonOne);
