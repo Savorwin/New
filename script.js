@@ -1,27 +1,18 @@
 "use strict";
 
-//Обработчик через DOM дерево
+//console.log(document.body);
+//console.log(document.documentElement);
+console.log(document.body.childNodes);
+console.log(document.body.firstChild);
+console.log(document.body.lastChild);
 
-const btn = document.querySelector('button');
+console.log(document.querySelector('#current').parentNode.parentNode);
 
-btn.onclick = function() {
-    alert('Click2');
-};
+console.log(document.querySelector('[data-current="3"]').nextElementSibling);
 
-// addEventListerner() - обработчик событий
-
-btn.addEventListener('click', (event) => {
-    console.log(event.target);
-    console.log('Click');
-});
-
-//убрать стандартное поведение браузера
-
-const link = document.querySelector('a');
-
-link.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    console.log(event.target);
-});
-
+for (let node of document.body.childNodes) {
+    if(node.nodeName == "#text") {
+        continue;
+    }
+    console.log(node);
+}
