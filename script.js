@@ -1,23 +1,25 @@
 "use strict";
 
-let high = 125.54;
-let low = 122.75;
-let close = 124.80;
+window.addEventListener('DOMContentLoaded', () => {
+    const box = document.querySelector('.box');
 
-let pivot = (high + low + close) / 3,
-    r1 = (2 * pivot) - low,
-    s1 = (2 * pivot) - high,
-    r2 = pivot + (r1 - s1),
-    s2 = pivot - (r1 - s1),
-    r3 = high + 2 * (pivot - low),
-    s3 = low - 2 * (high - pivot);
+    box.addEventListener('touchstart', (e) => {
+        e.preventDefault();
 
-console.log(`Точка pivot: ${pivot}`);
-console.log(`Сопротивление r1: ${r1}`);
-console.log(`Сопротивление r2: ${r2}`);
-console.log(`Сопротивление r3: ${r3}`);
-console.log(`Поддержка s1: ${s1}`);
-console.log(`Поддержка s2: ${s2}`);
-console.log(`Поддержка s3: ${s3}`);
+        console.log('Start');
+    });
+
+    box.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+
+        console.log('Move');
+    });
+
+    box.addEventListener('touchend', (e) => {
+        e.preventDefault();
+
+        console.log('End');
+    });
+});
 
 
