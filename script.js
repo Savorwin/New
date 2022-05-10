@@ -1,25 +1,15 @@
 "use strict";
 
-window.addEventListener('DOMContentLoaded', () => {
-    const box = document.querySelector('.box');
+const box = document.querySelector('.box');
 
-    box.addEventListener('touchstart', (e) => {
-        e.preventDefault();
+const newHeight = 200;
+const newWidth = 400;
 
-        console.log('Start');
-    });
+function changeParams(elem, h, w) {
+    elem.style.height = `${h}px`;
+    elem.style.width = `${w}px`;
+    elem.innerHTML = (h ?? 200) * (w ?? 200);
+}
 
-    box.addEventListener('touchmove', (e) => {
-        e.preventDefault();
-
-        console.log('Move');
-    });
-
-    box.addEventListener('touchend', (e) => {
-        e.preventDefault();
-
-        console.log('End');
-    });
-});
-
+changeParams(box, newHeight, newWidth);
 
