@@ -1,15 +1,15 @@
 "use strict";
 
 const box = document.querySelector('.box');
+const block = document.querySelector('.block');
 
-const newHeight = 200;
-const newWidth = 400;
+console.log(block);
 
-function changeParams(elem, h, w) {
-    elem.style.height = `${h}px`;
-    elem.style.width = `${w}px`;
-    elem.innerHTML = (h ?? 200) * (w ?? 200);
-}
+ if (block) {
+     console.log(block.textContent);
+ }
 
-changeParams(box, newHeight, newWidth);
+ console.log(block?.textContent);
+
+ console.log(1 + 3);
 
