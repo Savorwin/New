@@ -1,15 +1,21 @@
 "use strict";
 
-const box = document.querySelector('.box');
-const block = document.querySelector('.block');
+const obj = {
+    name: "Test",
+};
 
-console.log(block);
+let id = Symbol('id');
+obj[id] = 1;
 
- if (block) {
-     console.log(block.textContent);
- }
+console.log(obj[id]);
 
- console.log(block?.textContent);
+const myAwesomeDB = {
+    movies: [],
+    actors: [],
+    [Symbol('id')]: 123,
+};
 
- console.log(1 + 3);
+myAwesomeDB.id = '254151355';
 
+console.log(myAwesomeDB['id']);
+console.log(myAwesomeDB);
