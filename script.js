@@ -9,63 +9,60 @@ const user = {
     }
 };
 
-for (let key in user) {
-    console.log(user[key]);
+console.log(user);
+
+//map
+
+const shops = [
+    {rice: 500},
+    {oil: 200},
+    {bread: 50},
+];
+
+const map = new Map([
+    [{paper: 400}, 8000]
+]); // создание пустой карты
+
+map.set(shops[0], 5000)
+    .set(shops[1], 15000)
+    .set(shops[2], 25000);
+
+console.log(map);
+
+//перебор map
+
+//1
+for (let shop of map.keys()) {
+    console.log(shop);
 }
 
-const arr = ['a', 'b', 'c'];
+const goods = [];
+for(let shop of map.keys()){
+    goods.push(Object.keys(shop)[0]);
+}
+console.log(goods);
 
-for (let key in arr) {
-    console.log(arr[key]);
+//2
+for (let price of map.values()) {
+    console.log(price);
 }
 
-const str = "string";
-
-for (let key in str) {
-    console.log(str[key]);
+//3
+for (let price of map.entries()) {
+    console.log(price);
 }
 
-// for...of
+//4
+map.forEach( (value, keys, map) => {
+    console.log(value, keys);
+});
 
-const arr2 = ['a', 'b', 'c'];
+//Создать map из объекта
 
-for (let key of arr2) {
-    console.log(key);
-}
+const userMap = new Map(Object.entries(user));
+console.log(userMap);
 
-const str2 = "string";
+//Создать из map объект
 
-for (let key of str2) {
-    console.log(key);
-}
-
-
-//перебор объекта с помощью for...of
-const salaries = {
-    john: 500,
-    ivan: 1000,
-    ann: 5000,
-    sayHello: function() {
-        console.log('Hello');
-    },
-};
-
-salaries[Symbol.iterator] = function() {
-    return {
-        current: this.john,
-        last: this.ann,
-
-        next() {
-            if (this.current < this.last) {
-                this.current = this.current + 500;
-                return {done: false, value: this.current};
-            } else {
-                return {done: true};
-            }
-        }
-    }
-}
-
-for (let res of salaries) {
-    console.log(res);
-}
+const newUserObj = Object.fromEntries(userMap);
+console.log(newUserObj);
