@@ -8,27 +8,64 @@ const user = {
         console.log(`${this.name} ${this.surname}`);
     }
 };
-Object.defineProperty(user, "birthday", {value: prompt('Date?'), enumerable: true, configurable: true});
 
-Object.defineProperty(user, "showMyPublicData", {enumerable: false}); //скрыть метод в переборе
 for (let key in user) {
+    console.log(user[key]);
+}
+
+const arr = ['a', 'b', 'c'];
+
+for (let key in arr) {
+    console.log(arr[key]);
+}
+
+const str = "string";
+
+for (let key in str) {
+    console.log(str[key]);
+}
+
+// for...of
+
+const arr2 = ['a', 'b', 'c'];
+
+for (let key of arr2) {
     console.log(key);
 }
 
-//если понадобится свойство, которое нельзя удалить или изменить
-console.log(Object.getOwnPropertyDescriptor(Math, 'PI'));
+const str2 = "string";
+
+for (let key of str2) {
+    console.log(key);
+}
 
 
-console.log(Object.getOwnPropertyDescriptor(user, 'name'));
+//перебор объекта с помощью for...of
+const salaries = {
+    john: 500,
+    ivan: 1000,
+    ann: 5000,
+    sayHello: function() {
+        console.log('Hello');
+    },
+};
 
-Object.defineProperty(user, "name", {writable: false});
-Object.defineProperty(user, "gender", {value: 'male'});
+salaries[Symbol.iterator] = function() {
+    return {
+        current: this.john,
+        last: this.ann,
 
-console.log(Object.getOwnPropertyDescriptor(user, 'gender'));
+        next() {
+            if (this.current < this.last) {
+                this.current = this.current + 500;
+                return {done: false, value: this.current};
+            } else {
+                return {done: true};
+            }
+        }
+    }
+}
 
-//редактировать несколько методов одновременно
-
-Object.defineProperties(user, {
-    name: {writable: false},
-    surname: {writable: false}
-});
+for (let res of salaries) {
+    console.log(res);
+}
