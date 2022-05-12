@@ -1,18 +1,31 @@
 "use strict";
 
-const arr = [1, 1, 2, 2, 4, 5, 6, 5];
+const btns = document.querySelectorAll('button');
 
-const set = new Set(arr);
+//console.log(btns[0].classList.length);
 
-console.log(set);
+//console.log(btns[0].classList.item(0)); // получить класс под индексом
 
-//функция помощник
+//console.log(btns[1].classList.add('red')); // добавить класс
 
-const arr2 = ['Alex', 'Ann', 'Oleg', 'Alex'];
+//console.log(btns[0].classList.remove('blue')); // удалить класс
 
-function unique(arr2) {
-    return Array.from(new Set(arr2));
-}
+//console.log(btns[0].classList.toggle('blue')); // если класс есть, то будет убран, если нет, то добавлен
 
-console.log(unique(arr2));
+// проверить наличие класса на элементе
 
+//if (btns[1].classList.contains('red')) {
+//    console.log('red');
+//}
+
+//btns[0].addEventListener('click', () => {
+//    if (!btns[1].classList.contains('red')) {
+//        btns[1].classList.add('red');
+//   } else {
+//        btns[1].classList.remove('red');
+//    }
+//});
+
+btns[0].addEventListener('click', () => {
+    btns[1].classList.toggle('red');
+});
