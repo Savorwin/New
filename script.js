@@ -1,31 +1,41 @@
 "use strict";
 
-const btns = document.querySelectorAll('button');
+window.addEventListener('DOMContentLoaded', () => {
 
-//console.log(btns[0].classList.length);
 
-//console.log(btns[0].classList.item(0)); // получить класс под индексом
+    const tabs = document.querySelectorAll('tabheader__item'),
+          tabsContent = document.querySelectorAll('.tabcontent'),
+          tabsParent = document.querySelector(".tabheader__items");
 
-//console.log(btns[1].classList.add('red')); // добавить класс
+    function hideTabContent() {
+        tabsContent.forEach(item => {
+            item.style.display = "none";
+        });
 
-//console.log(btns[0].classList.remove('blue')); // удалить класс
+        tabs.forEach(item => {
+            item.classList.remove('tabheader__item_active');
+        });
+    }
 
-//console.log(btns[0].classList.toggle('blue')); // если класс есть, то будет убран, если нет, то добавлен
+    function showTabContent(i = 0) {
+        tabsContent[i].style.display = "block";
+        tabs[i].classList.add('tabheader__item_active');
+    }
 
-// проверить наличие класса на элементе
+    hideTabContent();
+    showTabContent();
 
-//if (btns[1].classList.contains('red')) {
-//    console.log('red');
-//}
+    tabsParent.addEventListener('click', (event) => {
+        const target = event.target;
 
-//btns[0].addEventListener('click', () => {
-//    if (!btns[1].classList.contains('red')) {
-//        btns[1].classList.add('red');
-//   } else {
-//        btns[1].classList.remove('red');
-//    }
-//});
+        if (target && target.classList.contains('tabheader__item')) {
+            tabs.forEach((item, i) => {
+                if (target == item) {
+                    hideTabContent();
+                    showTabContent(i);
+                }
+            });
+        }
+    });
 
-btns[0].addEventListener('click', () => {
-    btns[1].classList.toggle('red');
 });
