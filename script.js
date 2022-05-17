@@ -1,51 +1,25 @@
 "use strict";
 
-/* let user = {
-    name: "Evg"
-};
+//const now = new Date('2022-06-17');
+//new Date.parse('2022-06-17');
 
-let map = new WeakMap();
-map.set(user, "data");
+/* console.log(now.getFullYear()); // получить год
+console.log(now.getMonth()); // получить месяц
+console.log(now.getDate()); // получить день
+console.log(now.getHours()); // получить часы
+console.log(now.getMinutes()); // получить минуты
+console.log(now.getSeconds()); // получить секунды
+console.log(now.getDay()); // получить день недели
+console.log(now.getUTCHours()); // получить часы по UTC */
 
-user = null;
+// установить время
+//console.log(now.setHours(18)); // установить часы
 
-console.log(map.has()); */
-
-
-// пример использования WeakMap
-
-let cache = new WeakMap();
-
-function cacheUser(user) {
-    if (!cache.has(user)) {
-        cache.set(user, Date.now());
-    }
-
-    return cache.get(user);
+let start = new Date();
+for( let i = 0; i < 100000; i++) {
+    let some = i ** 3;
 }
 
-let lena = {name: "Elena"};
-let alex = {name: "Alex"};
+let end = new Date();
 
-cacheUser(lena);
-cacheUser(alex);
-
-lena = null;
-
-console.log(cache.has(lena));
-console.log(cache.has(alex));
-
-//WeakSet
-
-let messages = [
-    {text: "Hello", from: "John"},
-    {text: "World", from: "Alex"},
-    {text: "....", from: "M"},
-];
-
-let readMessages = new WeakSet();
-
-readMessages.add(messages[0]);
-readMessages.add(messages[1]);
-
-console.log(readMessages.has(messages[0]));
+alert(`Цикл отработал за ${end - start} миллисекунд`);
