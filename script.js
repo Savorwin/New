@@ -1,44 +1,51 @@
 "use strict";
 
-let btn = document.querySelector('.btn');
-let timerId;
-let i = 0;
+/* let user = {
+    name: "Evg"
+};
 
-function myAnimation() {
-    let elem = document.querySelector('.box');
-    let pos = 0;
-    let id = setInterval(frame, 10);
+let map = new WeakMap();
+map.set(user, "data");
 
-    function frame() {
-        if (pos == 300) {
-            clearInterval(id);
-        } else {
-            pos++;
-            elem.style.top = pos + "px";
-            elem.style.left = pos + 'px';
-        }
+user = null;
+
+console.log(map.has()); */
+
+
+// пример использования WeakMap
+
+let cache = new WeakMap();
+
+function cacheUser(user) {
+    if (!cache.has(user)) {
+        cache.set(user, Date.now());
     }
+
+    return cache.get(user);
 }
 
-btn.addEventListener('click', myAnimation);
+let lena = {name: "Elena"};
+let alex = {name: "Alex"};
 
-/* btn.addEventListener('click', () => {
-    timerId = setTimeout(logger, 2000);
-    timerId = setInterval(logger, 500);
-}); */
+cacheUser(lena);
+cacheUser(alex);
 
-/* function logger () {
-    if (i === 3) {
-        clearInterval(timerId);
-    }
-    console.log("Text");
-    i++;
-} */
+lena = null;
 
-//рекурсивный вызов setTimeout
+console.log(cache.has(lena));
+console.log(cache.has(alex));
 
-/* let id = setTimeout(function log() {
-    console.log('Hello');
-    id = setTimeout(log, 500);
-}, 500); */
+//WeakSet
 
+let messages = [
+    {text: "Hello", from: "John"},
+    {text: "World", from: "Alex"},
+    {text: "....", from: "M"},
+];
+
+let readMessages = new WeakSet();
+
+readMessages.add(messages[0]);
+readMessages.add(messages[1]);
+
+console.log(readMessages.has(messages[0]));
