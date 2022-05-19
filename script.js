@@ -1,13 +1,24 @@
 "use strict";
 
-const box = document.querySelector('.box');
+function User (name, id) {
+    this.name = name;
+    this.id = id;
+    this.human = true;
+    this.hello = function() {
+        console.log(`Hello ${this.name}`);
+    };
+}
 
-let observer = new MutationObserver(mutationRecords => {
-    console.log(mutationRecords);
-});
+User.prototype.exit = function() {
+    console.log(`Пользователь ${this.name} ушел`);
+};
 
-observer.observe(box, {
-    childList: true
-});
+const ivan = new User('Ivan', 28);
+const alex = new User('Alex', 20);
 
-observer.disconnect();
+ivan.hello();
+ivan.exit();
+alex.hello();
+
+console.log(ivan);
+console.log(alex);
