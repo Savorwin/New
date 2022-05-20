@@ -1,22 +1,23 @@
 "use strict";
 
-const persone = {
-    name: "Alex",
-    tel: "+79085889856",
-    parent: {
-        mom: "Olga",
-        dad: "Mike"
-    }
-};
+const inputRub = document.querySelector('#rub'),
+      inputUsd = document.querySelector('#usd');
 
-console.log(JSON.stringify(persone));
+inputRub.addEventListener('input', () => {
+    const request = new XMLHttpRequest();
 
-console.log(JSON.parse(JSON.stringify(persone)));
+    request.open('GET', 'current.json');
+    request.setRequestHeader('Content-type', 'application/json', 'charset=utf-8');
+    request.send();
 
-const clone = JSON.parse(JSON.stringify(persone));
-
-clone.parent.mom = "Ann";
-
-console.log(persone);
-console.log(clone);
-
+    request.addEventListener('readystatechange', () => {
+        if (request.readyState === 4 && request.status === 200) {
+            console.log(request.response);
+            const data = JSON.parse(request.response);
+            inputUsd.value = (+inputRub.value / data.current.usd).toFixed(2);
+        } else {
+            inputUsd.value = 'Что-то пошло не так';
+        }
+        
+    });
+});
