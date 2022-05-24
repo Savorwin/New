@@ -1,119 +1,35 @@
 "use strict";
 
+let cleanRoom = function() {
+    return new Promise(function(resolve, reject) {
+        resolve('Cleaned the room');
+    });
+};
 
-//Дерево колбэков разрастается, это плохо
-/* console.log('Запрос данных...');
+let removeGarbage = function(message) {
+    return new Promise(function(resolve, reject) {
+        resolve(message + ' remove garbage');
+    });
+};
 
-setTimeout ( () => {
-    console.log("Подготовка данных...");
+let winIcecream = function(message) {
+    return new Promise(function(resolve, reject) {
+        resolve(message + ' won icecream');
+    });
+};
 
-    const product = {
-        name: "TV",
-        price: 2000   
-    };
+/* cleanRoom().then(function(result) {
+    return removeGarbage(result);
+}).then(function(result) {
+    return winIcecream(result);
+}).then(function(result) {
+    console.log('Finished ' + result);
+}); */
 
-    setTimeout( () => {
-        product.status = "order";
-        console.log(product);
-    }, 2000);
-}, 2000); */
-
-//Promise
-
-/* const req = new Promise(function(resolve, reject) {
-    setTimeout ( () => {
-        console.log("Подготовка данных...");
-    
-        const product = {
-            name: "TV",
-            price: 2000   
-        };
-    
-        resolve(product);
-
-    }, 2000);
+Promise.all([cleanRoom(), removeGarbage(), winIcecream()]).then(function(){
+    console.log('all finished');
 });
 
-req.then( (product) => {
-   const req2 = new Promise((resolve, reject) => {
-    setTimeout( () => {
-        product.status = "order";
-        resolve(product);
-    }, 2000);
-   });
-
-   req2.then(data => {
-       console.log(data);
-   });
+Promise.race([cleanRoom(), removeGarbage(), winIcecream()]).then(function(){
+    console.log('one of them is finished');
 });
-
-// еще вариант
-
-req.then( (product) => {
-    return new Promise((resolve, reject) => {
-     setTimeout( () => {
-         product.status = "order";
-         resolve(product);
-     }, 2000);
-    });
-    }).then(data => {
-        data.modify = true;
-        return data;
-    }).then((data) => {
-        console.log(data);
-    });
-
-//работа с reject
-
-req.then( (product) => {
-    return new Promise((resolve, reject) => {
-     setTimeout( () => {
-         product.status = "order";
-         reject();
-     }, 2000);
-    });
-    }).then(data => {
-        data.modify = true;
-        return data;
-    }).then((data) => {
-        console.log(data);
-    }).catch(() => {
-        console.error("Произошла ошибка");
-    });
-
-    // finally
-
-    req.then( (product) => {
-        return new Promise((resolve, reject) => {
-         setTimeout( () => {
-             product.status = "order";
-             resolve(product);
-         }, 2000);
-        });
-        }).then(data => {
-            data.modify = true;
-            return data;
-        }).then((data) => {
-            console.log(data);
-        }).catch(() => {
-            console.error("Произошла ошибка");
-        }).finally(() => {
-            console.log('Finally');
-        }); */
-
-        const test = time => {
-            return new Promise(resolve => {
-                setTimeout(() => resolve(), time);
-            });
-        };
-
-        /* test(1000).then(() => console.log('1000 ms'));
-        test(2000).then(() => console.log('2000 ms')); */
-
-       /*  Promise.all([test(1000), test(2000)]).then( () => {
-            console.log('All');
-        }); */
-
-        Promise.race([test(1000), test(2000)]).then( () => {
-            console.log('All');
-        });
