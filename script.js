@@ -1,47 +1,34 @@
 "use strict";
 
-/* localStorage.setItem('number', 5);
+/* new RegExp('patern', 'flags');
+/pattern/flags */
 
-console.log(localStorage.getItem('number'));
-localStorage.clear(); */
+/* const ans = prompt('Введите ваше имя', ''); */
 
+/* const reg = /n/ig;
 
-const checkbox = document.querySelector('#checkbox'),
-      form = document.querySelector('form'),
-      change = document.querySelector('#color');
+console.log(ans.search(reg));
+console.log(ans.match(reg)); */
 
-      if(localStorage.getItem('isChecked')) {
-          checkbox.checked = true;
-      }
+/* const pass = prompt('Password');
 
-      if (localStorage.getItem('bg') === 'changed') {
-        localStorage.removeItem('bg');
-        form.style.backgroundColor = 'red';
-    }
+console.log(pass.replace(/./g, '*'));
+console.log(pass.replace(/\./g, '*')); // экранирование через обратный слеш
+ */
 
-checkbox.addEventListener('change', () => {
-    localStorage.setItem('isChecked', true);
-});
+/* console.log('12-34-56'.replace(/-/g, ':')); */
 
-change.addEventListener('click', () => {
-    if (localStorage.getItem('bg') === 'changed') {
-        localStorage.removeItem('bg');
-        form.style.backgroundColor = 'white';
-    } else {
-        localStorage.setItem('bg', 'changed');
-        form.style.backgroundColor = 'red';
-    }
-});
+/* const answer = prompt('Введите ваше имя');
 
-//добавить в localStorage можно и объект, но нужно его перевести в формат JSON
+const reg = /n/ig;
 
-const persone = {
-    name: "Alex",
-    age: 25
-};
+console.log(reg.test(answer)); */
 
-const serializedPersone = JSON.stringify(persone);
+/* const answer = prompt('Введите число:');
+const reg = /\d/g;
+let x = answer.match(reg);
+console.log(x); */
 
-localStorage.setItem('alex', serializedPersone);
+const str = 'My name is R2D2';
 
-console.log(JSON.parse(localStorage.getItem('alex')));
+console.log(str.match(/\w\d\w\d/i));
