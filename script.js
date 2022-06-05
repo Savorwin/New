@@ -1,13 +1,26 @@
 "use strict"
 
-try {
-    console.log('Normal');
-    console.log(a);
-    console.log('result');
-} catch(error) {
-    console.log(error.name);
-    console.log(error.message);
-    console.log(error.stack);
-}
+import $ from "jquery";
 
-console.log('Still normal');
+$(document).ready(function() {
+    
+    /* const btn = $('#btn'); // функция по получению элемента
+    console.log(btn); */
+
+    $('.list-item:first').hover(function() {
+        $(this).toggleClass('active');
+    });
+
+  /*   $('.list-item:eq(2)').on('click', function() {
+        $('image:even').fadeToggle('slow');
+    }); */
+
+    $('.list-item:eq(4)').on('click', function() {
+        $('image:odd').animate({
+            opacity: "toggle",
+            height: "toggle"
+        });
+    });
+
+});
+
