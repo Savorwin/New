@@ -1,26 +1,34 @@
 "use strict"
 
-import $ from "jquery";
+/* function* generator() {
+    yield 'S';
+    yield 'c';
+    yield 'r';
+    yield 'i';
+    yield 'p';
+    yield 't';
+}
 
-$(document).ready(function() {
-    
-    /* const btn = $('#btn'); // функция по получению элемента
-    console.log(btn); */
+const str = generator();
 
-    $('.list-item:first').hover(function() {
-        $(this).toggleClass('active');
-    });
+console.log(str.next());
+console.log(str.next());
+console.log(str.next()); */
 
-  /*   $('.list-item:eq(2)').on('click', function() {
-        $('image:even').fadeToggle('slow');
-    }); */
+function* count(n) {
+    for (let i = 0; i < n; i++) {
+        yield i;
+    }
+};
 
-    $('.list-item:eq(4)').on('click', function() {
-        $('image:odd').animate({
-            opacity: "toggle",
-            height: "toggle"
-        });
-    });
+/* const counter = count(7);
+console.log(counter.next().value);
+console.log(counter.next().value);
+console.log(counter.next().value);
+console.log(counter.next().value);
+console.log(counter.next().value); */
 
-});
 
+for (let key of count(7)) {
+    console.log(key);
+}
