@@ -1,2 +1,2 @@
-!function(){"use strict";for(let o of function*(o){for(let o=0;o<7;o++)yield o}())console.log(o)}();
+!function(){"use strict";const e=document.querySelector(".btn"),t=document.querySelector(".box");let n=0;function o(){n++,t.style.top=n+"px",t.style.left=n+"px",n<300&&requestAnimationFrame(o)}e.addEventListener("click",(()=>requestAnimationFrame(o)))}();
 //# sourceMappingURL=bundle.js.map

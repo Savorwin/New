@@ -1,34 +1,32 @@
-"use strict"
+"use strict";
 
-/* function* generator() {
-    yield 'S';
-    yield 'c';
-    yield 'r';
-    yield 'i';
-    yield 'p';
-    yield 't';
-}
+const btn = document.querySelector('.btn'),
+      elem = document.querySelector('.box');  
+let pos = 0;
 
-const str = generator();
+// function myAnimation() {
+//     let pos = 0;
 
-console.log(str.next());
-console.log(str.next());
-console.log(str.next()); */
+//     const id = setInterval(frame, 10);
+//     function frame() {
+//         if (pos == 300) {
+//             clearInterval(id);
+//         } else {
+//             pos++;
+//             elem.style.top = pos + "px";
+//             elem.style.left = pos + 'px';
+//         }
+//     }
+// }
 
-function* count(n) {
-    for (let i = 0; i < n; i++) {
-        yield i;
+function myAnimation() {
+    pos++;
+    elem.style.top = pos + 'px';
+    elem.style.left = pos + 'px';
+    
+    if (pos < 300) {
+        requestAnimationFrame(myAnimation);
     }
-};
-
-/* const counter = count(7);
-console.log(counter.next().value);
-console.log(counter.next().value);
-console.log(counter.next().value);
-console.log(counter.next().value);
-console.log(counter.next().value); */
-
-
-for (let key of count(7)) {
-    console.log(key);
 }
+
+btn.addEventListener('click', () => requestAnimationFrame(myAnimation));
